@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Berlin SensorHub
+  if error
+    p Error getting dynamic content.
+  else
+    p There are !{data} sensors in the database
+
+  a(href="/providers/BWB")
+    .providerBox
+      img(src="../images/bwb.png")
+  a(href="/providers/TSB")
+    .providerBox
+      img(src="../images/TSB.png")
+  a(href="/providers/BSR")
+    .providerBox
+      img(src="../images/BSR.png")
+  a(href="/providers/Stromnetz") 
+    .providerBox
+      img(src="../images/Stromnetz.png")

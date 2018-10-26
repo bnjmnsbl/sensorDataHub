@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .col-sm-12
+    
+  div(class="col-sm-6 sensor-infobox")  
+    h2 View Sensor
+    if error
+      p Error getting dynamic content.
+    else
+      ul
+        li Name: #{data.metadata.app_id}
+        li Owner: #{data.metadata.owner}
+        li Last seen: #{data.payloads[data.payloads.length-1].timestamp}
+        li 
+          a(href="/api/" + data._id) Get JSON Data
+  .col-sm-6  
+    #map-container
+      p Map here
+  .col-sm-12#vis-container
+      
+  link(rel='stylesheet', href='/stylesheets/leaflet.css')
+  script(type='text/javascript', src="/javascripts/leaflet.js")
+  script(type='text/javascript', src="/javascripts/d3.min.js")
+  script(type='text/javascript', src="/javascripts/map.js")
+  script(type='text/javascript', src="/javascripts/charts.js")  
