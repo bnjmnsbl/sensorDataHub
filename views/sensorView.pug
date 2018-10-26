@@ -18,6 +18,13 @@ block content
     #map-container
       p Map here
   .col-sm-12#vis-container
+    ul
+      each date, index in data.payloads[data.payloads.length-1].payload
+        li
+          label 
+            input(type="checkbox" name=index) 
+            | #{index}
+          
       
   link(rel='stylesheet', href='/stylesheets/leaflet.css')
   script(type='text/javascript', src="/javascripts/leaflet.js")

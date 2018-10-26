@@ -3,14 +3,17 @@ config = require(__dirname + '/config.json'),
 SensorModel = require("./models/sensor"),
 db = require("./db");
 
-let region = config.region,
-appId = config.appId,
-accessKey = config.key;
 
+config.forEach((el)=> {
 
-ttn.data(appId, accessKey)
+	let region = el.region,
+	appId = el.appId,
+	accessKey = el.key;
+	owner = el.owner
+
+	ttn.data(appId, accessKey)
 	.then((client)=> {
-		console.log("connected");
+		console.log("connected: " + appId);
 		
 		client.on("uplink", (function(devId, message) {
 			SensorModel.findOne({"metadata.app_id": appId}, function(err, sensor) {
@@ -22,7 +25,7 @@ ttn.data(appId, accessKey)
 							"app_id": message.app_id,
 							"hardware_serial": message.hardware_serial,
 							"frequency": message.metadata.frequency,
-							"owner": config.owner
+							"owner": owner
 							},
 						"payloads": {
 							"payload": message.payload_fields,
@@ -33,7 +36,7 @@ ttn.data(appId, accessKey)
 
 					newSensor.save(function(err, data) {
 						if (err) throw err
-						console.log("Sensor created: " + data);
+						console.log("Sensor created: " + appId);
 					})
 				}
 				else {
@@ -49,12 +52,21 @@ ttn.data(appId, accessKey)
 
 				sensor.save(function(err, updatedData) {
 					if (err) throw err;
-					console.dir("I updated: " + updatedData);
+					console.dir("I updated: " + appId);
 				})
 				}
 			})
 			
 		}));
 	})
+
+
+
+})
+
+
+
+
+
 
 
