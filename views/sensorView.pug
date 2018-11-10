@@ -16,18 +16,11 @@ block content
           a(href="/api/" + data._id) Get JSON Data
   .col-sm-6  
     #map-container
-      p Map here
-  .col-sm-12#vis-container
-    ul
-      each date, index in data.payloads[data.payloads.length-1].payload
-        li
-          label 
-            input(type="checkbox" name=index) 
-            | #{index}
+  .col-sm-12#vis-container 
+    #dropdown
           
-      
-  link(rel='stylesheet', href='/stylesheets/leaflet.css')
-  script(type='text/javascript', src="/javascripts/leaflet.js")
+  link(rel='stylesheet', href='/stylesheets/mapbox-gl.css')
+  script(type='text/javascript', src="/javascripts/mapbox-gl.js")
   script(type='text/javascript', src="/javascripts/d3.min.js")
   script(type='text/javascript', src="/javascripts/map.js")
   script(type='text/javascript', src="/javascripts/charts.js")  

@@ -1,7 +1,18 @@
-var map = L.map('map-container').setView([52.52,13.405], 13);
+let lnglat = [13.405,52.52,];
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
 
-L.marker([52.52,13.405]).addTo(map)
-  .bindPopup('Sensor Location');
+let map = new mapboxgl.Map({
+	container: 'map-container',
+	style:'/stylesheets/mapstyle.json',
+	center: [13.4244,52.5047],
+    zoom: 10
+
+})
+
+let el = document.createElement('div');
+
+el.className = 'marker';
+
+new mapboxgl.Marker(el)
+	.setLngLat(lnglat)
+	.addTo(map);

@@ -12,7 +12,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error"));
 
 function deleteSensor(name) {
 
-	SensorModel.findOneAndDelete({"name": name}, function(err, data) {
+	SensorModel.findOneAndDelete({"metadata.app_id": name}, function(err, data) {
 		if (err) throw err;
 		console.log("removed: " + name);
 	})
@@ -53,15 +53,21 @@ function createDummyData(appId, owner) {
 	for (i=0; i<10; i++) {
 		let dummy1 = Math.floor((Math.random() * 30) + 1);
 		let dummy2 = Math.floor((Math.random() * 200) + 1);
+		let timestamp = new Date(2018, 10, i, 12, 00, 00);
+
 		props["payloads"].push({
-			"temperature": dummy1,
-			"pressure": dummy2});
+			"payload": {
+				"temperature": dummy1,
+				"pressure": dummy2
+			},
+			"timestamp": timestamp
+		});
 	}
 
 	return props; 
 }
 
 
-createAndSaveSensor(createDummyData("BSR_Test", "BSR"));
-
+//createAndSaveSensor(createDummyData("Stromnetz_Test", "Stromnetz"));
+//deleteSensor("Stromnetz");
 module.exports = db;

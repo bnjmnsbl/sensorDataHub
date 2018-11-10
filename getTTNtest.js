@@ -26,6 +26,7 @@ config.forEach((el)=> {
 							"hardware_serial": message.hardware_serial,
 							"frequency": message.metadata.frequency,
 							"owner": owner
+							
 							},
 						"payloads": {
 							"payload": message.payload_fields,
