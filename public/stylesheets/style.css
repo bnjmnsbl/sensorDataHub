@@ -1,8 +1,151 @@
-.sidebar-nav {
-    margin-top: 20px;
-    padding: 0;
-    list-style: none;
+@font-face {
+  font-family: "Clan Medium";
+  src: url("../images/clan-medium.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Clan Book";
+  src: url("../images/clan-book.otf") format("opentype"); }
+
+
+body {
+	font-family: "Clan Book";
 }
+
+.main-container {
+	max-width: 800px;
+	margin: auto;
+}
+
+
+.navbar {
+	display: flex;
+	padding: .5em;
+
+}
+
+.navbar > ul {
+	list-style-type: none;
+	display: flex;
+	margin-left: auto;
+	margin-top: 1em;
+
+}
+
+
+.navbar > ul > li > a {
+	text-decoration: none;
+	display: block;
+	padding: .5em 1em;
+	
+}
+
+.navbar-logo a {
+	display: flex;
+	text-decoration: none;
+}
+
+.navbar-logo .navbar-logo-text {
+	font-family: "Clan Medium", "Arial", "sans-serif";
+	color: black;
+	font-size: 2.5em;
+	margin-top: 0.3em;
+	margin-left: 0.3em;
+}
+
+.list-container {
+	margin-top: 2em;
+}
+
+.tableheader {
+	display: flex;
+
+}
+
+.tableheader-standort {
+	margin-left:3em;
+}
+
+.tableheader-number {
+	margin-left: 10em;
+}
+
+.line {
+	width: 800px;
+	height: 2px;
+	color: black!important;
+	background-color: black;
+}
+
+.tablerow {
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	margin-left: 1em;
+	margin-bottom: 0.5em;
+	font-size: 1.2em;
+}
+
+.owner-logo {
+	width: 50px;
+	height: 50px;
+}
+
+.owner-name {
+	font-family: "Clan Medium", "Arial", "sans-serif";
+	width: 200px;
+	margin-left: 10px;
+}
+
+.owner-number {
+
+}
+
+.sublist {
+	margin-left: 2em;
+	list-style-type: none;
+	max-width: 20em;
+ 	max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.sublist-item {
+	background-color: #d3d3d3;
+	height: 2em;
+	margin: 0.5em;
+}
+
+
+.button-collapse {
+	display: inline-block;
+	height: 3em;
+	width: 3em;
+	background-color: #e60032;
+	border-radius: 50%;
+	margin-left: 5em;
+	cursor: pointer;
+}
+
+/* This is just the arrow in the button*/
+.button-collapse:after {
+	content: '';
+	display: inline-block;
+	margin-top: 0.2em;
+	margin-left: 0.1em;
+	width: 0.6em;
+	height: 0.6em;
+	border-top: 0.2em solid #FFF; 
+	border-right: 0.2em solid #FFF;
+	-moz-transform: rotate(-225deg);
+  	-webkit-transform: rotate(-225deg);
+  	transform: rotate(-225deg);
+}
+
+
+.active, .button-collapse:hover {
+    background-color: #555;
+}
+
 
 .providerBox {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -10,7 +153,6 @@
 	width: 10em;
 	display: inline-block;
 	text-align: center;
-
 	margin-right: 3em;
 	margin-top: 5em;
 }

@@ -1,10 +1,26 @@
 let SensorModel = require("../models/sensor");
 
 exports.sensor_count = function (req, res) {
-	SensorModel.countDocuments({}, function(err, result) {
+	//SensorModel.countDocuments({}, function(err, result) {
+	SensorModel.find({}, "metadata.owner", function(err, result){
+
 		
-		res.render("index", {title: "Sensor List", error: err, data: result});
-	})
+		let providerNames = {
+			totalNumber: result.length,
+			names: {}
+		}
+		
+		result.forEach(function(el) {
+			if (providerNames.names.hasOwnProperty(el.metadata.owner)) {
+				providerNames.names[el.metadata.owner] += 1;
+			} else {
+				providerNames.names[el.metadata.owner] = 1;
+			}
+		})
+		res.render("index", {title: "Sensor List", error: err, data: providerNames})
+	})	
+	// 	res.render("index", {title: "Sensor List", error: err, data: result});
+	// })
 }
 
 exports.basic_api = function(req, res) {
