@@ -52,8 +52,13 @@ body {
 	margin-left: 0.3em;
 }
 
+.red-text {
+	color: #e60032;
+}
+
 .list-container {
 	margin-top: 2em;
+
 }
 
 .tableheader {
@@ -101,18 +106,26 @@ body {
 }
 
 .sublist {
-	margin-left: 2em;
+
 	list-style-type: none;
-	max-width: 20em;
+	max-width: 40em;
  	max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
 
 .sublist-item {
+	display: flex;
+	align-items: center;
 	background-color: #d3d3d3;
 	height: 2em;
 	margin: 0.5em;
+	font-size: 0.8em;
+}
+
+.sublist-item  a {
+	margin-left: 2em;
+	text-decoration: none;
 }
 
 
@@ -219,4 +232,13 @@ input[type=checkbox] {
 
 .checkbox-label {
 	font-weight: 400;
+}
+
+.footer {
+	position: fixed;
+	background-color: white;
+	bottom: 0;
+	margin-left: 2.5em;
+
+
 }

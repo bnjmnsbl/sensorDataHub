@@ -1,26 +1,41 @@
 let SensorModel = require("../models/sensor");
 
 exports.sensor_count = function (req, res) {
-	//SensorModel.countDocuments({}, function(err, result) {
-	SensorModel.find({}, "metadata.owner", function(err, result){
 
-		
-		let providerNames = {
-			totalNumber: result.length,
-			names: {}
-		}
-		
+	SensorModel.find({}, function(err, result){
+
+		let sensors = {
+				
+				totalLength: result.length,
+				providers:{}
+			}	
+	
 		result.forEach(function(el) {
-			if (providerNames.names.hasOwnProperty(el.metadata.owner)) {
-				providerNames.names[el.metadata.owner] += 1;
+			if (!sensors.providers.hasOwnProperty(el.metadata.owner)) {
+				sensors.providers[el.metadata.owner] = [{
+					"app_id": el.metadata.app_id,
+					"hardware_serial": el.metadata.hardware_serial,
+					"url": el.url
+				}]
 			} else {
-				providerNames.names[el.metadata.owner] = 1;
+				sensors.providers[el.metadata.owner].push({
+					"app_id": el.metadata.app_id,
+					"hardware_serial": el.metadata.hardware_serial,
+					"url": el.url
+				})
 			}
+
+			
+			// if (providerNames.names.hasOwnProperty(el.metadata.owner)) {
+			// 	providerNames.names[el.metadata.owner] += 1;
+			// } else {
+			// 	providerNames.names[el.metadata.owner] = 1;
+			// }
 		})
-		res.render("index", {title: "Sensor List", error: err, data: providerNames})
+		console.dir(sensors.providers);
+		res.render("index", {title: "Sensor List", error: err, data: sensors})
 	})	
-	// 	res.render("index", {title: "Sensor List", error: err, data: result});
-	// })
+	
 }
 
 exports.basic_api = function(req, res) {
