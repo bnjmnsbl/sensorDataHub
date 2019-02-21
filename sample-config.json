@@ -1,0 +1,11 @@
+[
+
+  {
+    "region": "EU",
+    "appId": "ch_testapp1",
+    "key": "your-key-here", //find it under ttn console -> Applications -> Access Keys (bottom of page)
+    "owner": "TSB"
+
+   }
+    
+]
