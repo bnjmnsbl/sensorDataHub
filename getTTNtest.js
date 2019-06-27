@@ -1,14 +1,14 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 let ttn = require('ttn'),
   config = require(__dirname + '/config.json'),
-  SensorModel = require('./models/sensor'),
-  db = require('./db');
+  SensorModel = require('./models/sensor');
+
+console.log('GetTTN started');
 
 
 config.forEach((el)=> {
 
-  let region = el.region,
-    appId = el.appId,
+  let appId = el.appId,
     accessKey = el.key,
     owner = el.owner;
 
@@ -40,8 +40,7 @@ config.forEach((el)=> {
               if (err) throw err;
               console.log('Sensor created: ' + appId);
             });
-          }
-          else {
+          } else {
 
             let data = {
               'payload': message.payload_fields,
@@ -61,9 +60,6 @@ config.forEach((el)=> {
 
       }));
     });
-
-
-
 });
 
 

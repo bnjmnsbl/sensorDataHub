@@ -1,0 +1,11 @@
+.icon {
+    cursor: pointer;
+  }
+
+  .image.is-24x24 {
+    display: inline;
+    position: relative;
+    top: 5px;
+    border-radius: 20px;
+  }
+  
